@@ -1,25 +1,69 @@
  import React from "react";
  import ReactDOM from "react-dom/client";
+//  import "./style.css";
 
 
- const root2=ReactDOM.createRoot(document.getElementById("root2"));
-const Heading1 = () =>{
-   return <h1>This is a react element</h1>
-}
+const root=ReactDOM.createRoot(document.getElementById("root"));
 
 
-const x=10;
-const Heading2 = () => {
+const title = (
+    <h1 id="title">Logo</h1>
+)
+
+
+const Header= () => {
     return (
-        <div>
-            {/* component compositon */}
-            <Heading1/>
-            <h2>This is a {"namuuuu"} react component</h2>
-            <h3>This is also a react component</h3>
-            {x}
-           {console.log("naman")}
+        <div className="header">
+            {title}
+            <ul className="nav-list">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Card</li>
+            </ul>
         </div>
     )
 };
 
-root2.render(<Heading2/>);  
+const BurgerKing={
+    image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e33e1d3ba7d6b2bb0d45e1001b731fcf",
+    name:"Burger King",
+    cusines:["American", "Burgers"],
+    ratings:"4.2",
+}
+const RestrauntCard= () => {
+    return (
+        <div className="card">
+            <img src={BurgerKing.image}/>
+            <h2>{BurgerKing.name}</h2>
+            <h3>{BurgerKing.cusines.join(", ")}</h3>
+            <h4>{BurgerKing.ratings}</h4>
+        </div>
+    )
+}
+const Body= () => {
+    return(
+        <div>
+            <RestrauntCard />
+        </div>
+    )
+}
+
+const Footer= () => {
+    return(
+        <div>
+            footer
+        </div>
+    )
+}
+const AppLayout= () => {
+    return (
+    <>
+        <Header />
+        <Body />
+        <Footer />
+    </>
+    )
+}
+
+root.render(<AppLayout/>);  

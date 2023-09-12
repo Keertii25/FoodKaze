@@ -3,3 +3,30 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+.header{
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+}
+.nav-list{
+    list-style-type: none;
+}
+.header> ul{
+    display: flex;
+}
+.header> ul> li{
+    padding: 10px;
+}
+
+.card{
+    width:250px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.card > img{
+    width: 100%;
+    /* height: 75%; */
+}
