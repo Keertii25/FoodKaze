@@ -1,32 +1,6 @@
- import React from "react";
- import ReactDOM from "react-dom/client";
-//  import "./style.css";
+export const IMG_CDN_URL= "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
-
-
-const title = (
-    <h1 id="title">Logo</h1>
-)
-
-
-const Header= () => {
-    return (
-        <div className="header">
-            {title}
-            <ul className="nav-list">
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li>Card</li>
-            </ul>
-        </div>
-    )
-};
-
-
-const RestaurantList=[
+export const RestaurantList=[
     {
         "info": {
             "id": "425509",
@@ -378,52 +352,3 @@ const RestaurantList=[
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
-
-const RestaurantCard = ({name, cuisines, avgRating, cloudinaryImageId}) => {
-    // const {name, cuisines, avgRating, cloudinaryImageId} = restaurant.info;
-        return (
-        <div className="card">
-            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" 
-        +cloudinaryImageId}/>
-            <h2>{name}</h2>
-            <h3>{cuisines.join(", ")}</h3>
-            <h4>Rating {avgRating}</h4>
-        </div>
-    );
-};
-const Body= () => {
-    return(
-        <div className="Restaurant-list">
-            {
-                RestaurantList.map((Restaurant)=>{
-                    return <RestaurantCard {...Restaurant.info}/>
-                })
-            }
-            {/* <RestaurantCard  {...RestaurantList[0].info}/>
-            <RestaurantCard  {...RestaurantList[1].info}/>
-            <RestaurantCard  {...RestaurantList[2].info}/>
-            <RestaurantCard  {...RestaurantList[3].info}/> */}
-            
-            
-        </div>
-    );
-};
-
-const Footer= () => {
-    return(
-        <div>
-            footer
-        </div>
-    )
-}
-const AppLayout= () => {
-    return (
-    <>
-        <Header />
-        <Body />
-        <Footer />
-    </>
-    )
-}
-
-root.render(<AppLayout/>);  
