@@ -26,10 +26,7 @@ const Body= () => {
         setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
-    // if(!allRestaurants) return null;
-    // if(filteredRestaurants?.length===0)
-    //     return <h1>No restaurants found...!!</h1>;
-
+    if(!allRestaurants) return null;
 
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>

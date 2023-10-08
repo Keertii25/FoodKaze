@@ -1,7 +1,9 @@
 import { useState } from "react";
+import Logo from "../assets/img/OIP.jpeg";
+import { Link } from "react-router-dom";
 
 export const title = (
-    <h1 id="title">Logo</h1>
+    <a href="/"> <img className="logo" alt="logo" src={Logo}/> </a>
 );
 
 
@@ -11,9 +13,9 @@ export const Header= () => {
         <div className="header">
             {title}
             <ul className="nav-list">
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
                 <li>Card</li>
             </ul>
             {isLoggedIn ? <button onClick={()=> setIsLoggedIn(false)}>Logout</button> : <button onClick={()=> setIsLoggedIn(true)}>Login</button>}
