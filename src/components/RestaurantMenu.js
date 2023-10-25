@@ -8,19 +8,21 @@ const RestaurantMenu = () => {
   // useParams returns an object that's why we use de-structuring.
   const { id } = resID;
   const [restaurant, setRestaurants] = useState(null);
-  const [restaurantData, setRestaurantData] = useState([]);
+  const [restaurantData, setRestaurantsData] = useState(null);
 
   useEffect(() => {
     getRestaurantMenu();
   }, []);
   async function getRestaurantMenu() {
     const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`
+      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${id}&catalbog_qa=undefined&submitAction=ENTER`
     );
     const json = await data.json();
     console.log(json.data);
     setRestaurants(json?.data?.cards[0]?.card?.card?.info);
-    setRestaurantData(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
+    console.log(restaurant);
+    setRestaurantsData(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+    console.log(restaurantData)
   }
 
   return (!restaurant)? <Shimmer/> :(
@@ -32,7 +34,15 @@ const RestaurantMenu = () => {
         <h3>{restaurant.avgRating}</h3>
         <h3> {restaurant.city} </h3>
         </div>
-          {restaurantData.map((temp)=> <li key={temp?.card?.info?.id}>{temp?.card?.info?.name} </li>)}
+          {restaurantData.map((temp1)=>
+          <>
+            <h1>{temp1?.card?.card?.title} </h1>
+            <li>{temp1?.card?.card?.itemCards?.map((temp2)=>
+              <li>{temp2?.card?.info?.name}</li>
+            )}</li>
+          </>
+          )}
+        
         <div>
       </div>
     </>
