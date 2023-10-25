@@ -2,28 +2,17 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
+import useRestaurant from "../utils/useRestaurants";
 
 const RestaurantMenu = () => {
   const resID = useParams();
   // useParams returns an object that's why we use de-structuring.
   const { id } = resID;
-  const [restaurant, setRestaurants] = useState(null);
-  const [restaurantData, setRestaurantsData] = useState(null);
+  
+  const restaurantHook = useRestaurant(id);
+  const {restaurant,restaurantData} = restaurantHook;
 
-  useEffect(() => {
-    getRestaurantMenu();
-  }, []);
-  async function getRestaurantMenu() {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${id}&catalbog_qa=undefined&submitAction=ENTER`
-    );
-    const json = await data.json();
-    console.log(json.data);
-    setRestaurants(json?.data?.cards[0]?.card?.card?.info);
-    console.log(restaurant);
-    setRestaurantsData(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-    console.log(restaurantData)
-  }
+  
 
   return (!restaurant)? <Shimmer/> :(
     <>

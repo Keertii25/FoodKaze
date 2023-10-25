@@ -18,6 +18,7 @@ export const Header= () => {
                 <li><Link to="/contact">Contact</Link></li>
                 <li>Card</li>
             </ul>
+            
             {isLoggedIn ? <button onClick={()=> setIsLoggedIn(false)}>Logout</button> : <button onClick={()=> setIsLoggedIn(true)}>Login</button>}
         </div>
         

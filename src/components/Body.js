@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import {filterData} from "../utils/helper"
+import useOnline from "../utils/useOnline";
 
 
 
@@ -22,6 +23,13 @@ const Body= () => {
         setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
+
+    const isOnline = useOnline();    //created a useOnline custom hook which returns true or false
+    console.log(isOnline);
+    if(!isOnline){
+        return <h1>🔴 You are offline, Plz check your internet connection</h1>
+    }
+
     if(!allRestaurants) return null;
 
     return (allRestaurants.length===0)? <Shimmer/> :(
