@@ -34,26 +34,26 @@ const Body= () => {
 
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
-            <div className="search-container">
+            <div className="mt-2 mb-4 flex justify-center gap-2">
                 <input
                     type="text"
-                    className="search-input"
-                    placeholder="Search"
+                    className="border-[2px] border-l-4 border-r-4 border-neutral-500 rounded-full w-2/5 p-1 text-sm h-10 font-serif focus: outline-none"
+                    placeholder="ex: The Filter Coffee"
                     value={searchText}
                     onChange={(e)=>{
                         return setSearchText(e.target.value );
                     }}
                 />
-                <button className="search-btn" onClick={()=>{
+                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{
                     const data=filterData(searchText,allRestaurants);
                     return setFilteredRestaurants(data);
                 }}>Search</button>
             </div>
-            <div className="Restaurant-list">
+            <div className="Restaurant-list flex flex-wrap gap-3">
                 {
                     (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
                         return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}/></Link>
-                    })
+                    }) 
                 }
             </div>
         </>
