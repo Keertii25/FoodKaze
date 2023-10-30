@@ -49,12 +49,15 @@ const Body= () => {
                     return setFilteredRestaurants(data);
                 }}>Search</button>
             </div>
-            <div className="Restaurant-list flex flex-wrap gap-3">
-                {
-                    (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
-                        return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}/></Link>
-                    }) 
-                }
+            <div className=" ">
+                <div className="flex flex-wrap gap-7 justify-center">
+                    {
+                        (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
+                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}/></Link>
+                        }) 
+                    }
+                </div>
+                
             </div>
         </>
     );
