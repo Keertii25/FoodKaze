@@ -8,7 +8,7 @@ import useOnline from "../utils/useOnline";
 
 
 
-const Body= () => {
+const Body= (props) => {
     const [allRestaurants, setAllRestaurants]= useState([]);
     const [filteredRestaurants, setFilteredRestaurants]= useState([]); 
     const [searchText,setSearchText]= useState("");
@@ -20,8 +20,8 @@ const Body= () => {
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
         console.log(json); 
-        setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
     const isOnline = useOnline();    //created a useOnline custom hook which returns true or false
@@ -53,11 +53,10 @@ const Body= () => {
                 <div className="flex flex-wrap gap-7 justify-center">
                     {
                         (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
-                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}/></Link>
+                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info} name1={props.name} /></Link>
                         }) 
                     }
                 </div>
-                
             </div>
         </>
     );

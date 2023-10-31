@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -22,6 +22,7 @@ const About = lazy(() => import("./components/About"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const AppLayout = () => {
+
   return (
     <>
       <Header />
@@ -38,7 +39,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <Body name={"naman"} />,
       },
       {
         path: "/about", // Here we can also write path:"about",
