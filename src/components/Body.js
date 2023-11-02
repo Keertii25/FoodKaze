@@ -34,7 +34,7 @@ const Body= (props) => {
 
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
-            <div className="mt-2 mb-4 flex justify-center gap-2">
+            <div className="mt-2 mb-5 flex justify-center gap-2">
                 <input
                     type="text"
                     className="border-[2px] border-l-4 border-r-4 border-neutral-500 rounded-full w-2/5 p-1 text-sm h-10 font-serif focus: outline-none"
@@ -50,10 +50,10 @@ const Body= (props) => {
                 }}>Search</button>
             </div>
             <div className=" ">
-                <div className="flex flex-wrap gap-7 justify-center">
+                <div className="flex flex-wrap gap-10 justify-center mx-2">
                     {
-                        (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
-                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info} name1={props.name} /></Link>
+                        (filteredRestaurants.length===0 || !allRestaurants)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
+                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}  /></Link>
                         }) 
                     }
                 </div>
