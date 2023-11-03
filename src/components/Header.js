@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import Logo from "../assets/img/OIP.jpeg";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import UsersContext from "../utils/UserContext";
 
 export const title = (
   <a href="/">
@@ -10,8 +11,10 @@ export const title = (
 );
 
 export const Header = () => {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline = useOnline();
+
   return (
     <div className="flex justify-between border px-3 border-green-600">
       <div className="flex gap-8">
@@ -23,6 +26,7 @@ export const Header = () => {
           <li><Link to="/instamart">Instamart</Link></li>
         </ul>
       </div>
+       {/* ✅ and login, logout button  */}
       <div className="flex gap-4 py-8">
         <div> {isOnline ? <div>✅</div> : <div>❌</div>}</div>
         <div className="bg-green-600 h-7 w-14 text-center rounded-lg">

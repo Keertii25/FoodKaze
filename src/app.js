@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
+import UsersContext from "./utils/UserContext";
 
 //Dynamic import or lazy loading of Instamart
 const Instamart = lazy(() => import("./components/Instamart"));
@@ -22,12 +23,17 @@ const About = lazy(() => import("./components/About"));
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const AppLayout = () => {
-
+  const [info, setInfo]= useState({
+    name:"naman",
+    phone:"7879651164",
+  });
   return (
     <>
-      <Header />
+    <UsersContext.Provider value={{user:info}} >
+      <Header/>
       <Outlet></Outlet>
-      <Footer />
+      <Footer/>
+    </UsersContext.Provider>
     </>
   );
 };
@@ -39,7 +45,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body/>,
+        element: <Body />,
       },
       {
         path: "/about", // Here we can also write path:"about",

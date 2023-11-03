@@ -8,7 +8,7 @@ import useOnline from "../utils/useOnline";
 
 
 
-const Body= (props) => {
+const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
     const [filteredRestaurants, setFilteredRestaurants]= useState([]); 
     const [searchText,setSearchText]= useState("");
@@ -52,8 +52,8 @@ const Body= (props) => {
             <div className=" ">
                 <div className="flex flex-wrap gap-10 justify-center mx-2">
                     {
-                        (filteredRestaurants.length===0 || !allRestaurants)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
-                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info}  /></Link>
+                        (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
+                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info} /></Link>
                         }) 
                     }
                 </div>
