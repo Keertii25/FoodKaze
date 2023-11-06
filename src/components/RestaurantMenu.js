@@ -10,6 +10,7 @@ const RestaurantMenu = () => {
   const { id } = resID;
 
   const restaurantHook = useRestaurant(id);
+  //Destructuring our Custom hook
   const { restaurant, restaurantData } = restaurantHook;
 
   return !restaurant ? (
@@ -23,14 +24,14 @@ const RestaurantMenu = () => {
         <h3>{restaurant.avgRating}</h3>
         <h3> {restaurant.city} </h3>
       </div>
-      {restaurantData.map((temp1) => (
+      {restaurantData.map((temp1,index) => (
         <>
-          <h1>{temp1?.card?.card?.title} </h1>
-          <li>
+          <h1 key={index}>{temp1?.card?.card?.title} </h1>
+          <div>
             {temp1?.card?.card?.itemCards?.map((temp2) => (
-              <li>{temp2?.card?.info?.name}</li>
+              <li key={temp2?.card?.info?.id} >{temp2?.card?.info?.name}</li>
             ))}
-          </li>
+          </div>
         </>
       ))}
 

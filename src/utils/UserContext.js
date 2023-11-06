@@ -4,6 +4,6 @@ const UsersContext = createContext({
             name:"dummyName",
             phone:123456,
     }
-}
-);
+});
+
 export default UsersContext;

@@ -29,7 +29,7 @@ export const Header = () => {
        {/* ✅ and login, logout button  */}
       <div className="flex gap-4 py-8">
         <div> {isOnline ? <div>✅</div> : <div>❌</div>}</div>
-        <div className="bg-green-600 h-7 w-14 text-center rounded-lg">
+        <div className="bg-green-600 h-7 w-14 text-center rounded-lg text-white">
             {isLoggedIn ? (
           <button onClick={() => setIsLoggedIn(false)}>Logout</button>
         ) : (

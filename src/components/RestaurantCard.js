@@ -29,7 +29,6 @@ const RestaurantCard = ({
           alt=""
         />
         {avgRating}
-        {user.name}
       </div>
     </div>
   );

@@ -11,7 +11,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 import UsersContext from "./utils/UserContext";
-
+import Store from "./utils/Redux/Store";
+import {Provider} from "react-redux";
 //Dynamic import or lazy loading of Instamart
 const Instamart = lazy(() => import("./components/Instamart"));
 //Dynamic import or lazy loading of Contact
@@ -29,11 +30,13 @@ const AppLayout = () => {
   });
   return (
     <>
+    <Provider store={Store}>
     <UsersContext.Provider value={{user:info}} >
       <Header/>
       <Outlet></Outlet>
       <Footer/>
     </UsersContext.Provider>
+    </Provider>
     </>
   );
 };
