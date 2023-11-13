@@ -7,12 +7,14 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Error from "./components/Error";
 // import Contact from "./components/Contact";
+import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 import UsersContext from "./utils/UserContext";
 import Store from "./utils/Redux/Store";
 import {Provider} from "react-redux";
+import { ChakraProvider } from "@chakra-ui/react";
 //Dynamic import or lazy loading of Instamart
 const Instamart = lazy(() => import("./components/Instamart"));
 //Dynamic import or lazy loading of Contact
@@ -30,13 +32,15 @@ const AppLayout = () => {
   });
   return (
     <>
-    <Provider store={Store}>
+    <ChakraProvider>
+    <Provider store={Store}>  
     <UsersContext.Provider value={{user:info}} >
       <Header/>
       <Outlet></Outlet>
       <Footer/>
     </UsersContext.Provider>
     </Provider>
+    </ChakraProvider>
     </>
   );
 };
@@ -81,9 +85,14 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
+        path:"cart",
+        element:<Cart/>
+      },
+      {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
       },
+      
     ],  
   },
 ]);
