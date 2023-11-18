@@ -8,11 +8,13 @@
     /* border: 1px solid red; */
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .shimmer-box{
     border: 1px solid black;
-    height: 250px;
-    width: 220px;
+    border-radius:12px;
+    height: 200px;
+    width: 240px;
     background-color: rgb(186, 165, 165);
     opacity: 0.1;
     gap: 10px;

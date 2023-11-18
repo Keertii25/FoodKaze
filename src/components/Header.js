@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import Logo from "../assets/img/OIP.jpeg";
+import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UsersContext from "../utils/UserContext";
@@ -7,10 +7,13 @@ import { useSelector } from "react-redux";
 import { Button } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 import { BiSolidUser } from "react-icons/bi";
+import { BsFillCartFill } from "react-icons/bs";
+import { TbProgressHelp } from "react-icons/tb";
+import { DrawerExample } from "../constants";
 
 export const title = (
   <a href="/">
-    <img className="h-24" alt="logo" src={Logo} />
+    <img className="h-16 mt-4" alt="logo" src={Logo} />
   </a>
 );
 
@@ -22,41 +25,34 @@ export const Header = () => {
   console.log(CartItems);
 
   return (
-    <div className="flex justify-between border px-3 border-green-600">
+    <div className="flex justify-between border px-3 border-green-500 overflow-hidden">
       <div className="flex gap-8">
         {title}
-        <ul className="flex gap-4 py-8 font-serif">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/instamart">Instamart</Link>
-          </li>
-          <li>
-            <Link to={"/cart"}>Cart- {CartItems.length} items</Link>
-          </li>
-        </ul>
       </div>
-      <Button colorScheme="teal" variant="solid">
-        <Icon as={BiSolidUser} />
-        Email
-      </Button>
-      {/* ✅ and login, logout button  */}
-      <div className="flex gap-4 py-8">
-        <div> {isOnline ? <div>✅</div> : <div>❌</div>}</div>
-        <div className="bg-green-600 h-7 w-14 text-center rounded-lg text-white">
+      
+      {/* ✅, login and logout button  */}
+      <div className="flex items-center gap-4 py-8">
+        <div> {isOnline ? <div className="text-xl">✅</div> : <div className="text-xl">❌</div>}</div>
+        <div>
+          <Link to={"/cart"} className="flex items-center"><BsFillCartFill className="text-[#3cab3c] text-4xl relative"/>
+            {CartItems.length}
+          </Link>
+        </div>
+
+        <div>
           {isLoggedIn ? (
-            <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+            <Button onClick={()=> {setIsLoggedIn(false)}} colorScheme="white" variant="outline" fontSize={18}  gap={1}>
+              <Icon as={BiSolidUser} />
+              Log in
+            </Button>
           ) : (
-            <button onClick={() => setIsLoggedIn(true)}>Login</button>
+            <Button onClick={()=> {setIsLoggedIn(true)}} colorScheme="white" variant="outline" fontSize={18}  gap={1}>
+              <Icon as={BiSolidUser}/>
+              Log out
+            </Button>
           )}
         </div>
+        <DrawerExample/>
       </div>
     </div>
   );

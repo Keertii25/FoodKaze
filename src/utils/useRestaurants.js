@@ -25,7 +25,7 @@ const useRestaurant = (id) => {
     console.log(restaurantData);
   }
 
-  //Return restaurant-menu using restaurant,restaurantData as object.
+  //Return restaurant-menu using restaurant, restaurantData as object.
   return {restaurant,restaurantData};
 };
 export default useRestaurant;

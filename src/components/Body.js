@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import {filterData} from "../utils/helper"
 import useOnline from "../utils/useOnline";
-
+import CarouselCard from "./carouselCard";
 
 
 const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
     const [filteredRestaurants, setFilteredRestaurants]= useState([]); 
+    const [carousel,setCarousel] =useState([]);
     const [searchText,setSearchText]= useState("");
     
     useEffect(()=>{
@@ -20,6 +21,9 @@ const Body= () => {
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
         console.log(json); 
+        setCarousel(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
+        console.log("carousel")
+        console.log(carousel)
         setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
@@ -49,14 +53,18 @@ const Body= () => {
                     return setFilteredRestaurants(data);
                 }}>Search</button>
             </div>
-            <div className=" ">
-                <div className="flex flex-wrap gap-10 justify-center mx-2">
-                    {
-                        (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
-                            return <Link to={"/restaurant/" + Restaurant.info.id} key={Restaurant.info.id}><RestaurantCard {...Restaurant.info} /></Link>
-                        }) 
-                    }
-                </div>
+            {/* <div className="flex">
+                {carousel.map((carouselItem,index)=>{
+                    return <CarouselCard {...carouselItem}/>
+                })}
+            </div> */}
+            
+            <div className="flex flex-wrap gap-10 justify-center mx-2">
+                {
+                    (filteredRestaurants.length===0)? <h1>No restaurants found...!!</h1> : filteredRestaurants.map((Restaurant)=>{
+                        return  <RestaurantCard key={Restaurant.info.id} restaurant={Restaurant} {...Restaurant.info} />
+                    }) 
+                }
             </div>
         </>
     );
