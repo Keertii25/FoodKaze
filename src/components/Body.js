@@ -53,11 +53,14 @@ const Body= () => {
                     return setFilteredRestaurants(data);
                 }}>Search</button>
             </div>
-            {/* <div className="flex">
-                {carousel.map((carouselItem,index)=>{
-                    return <CarouselCard {...carouselItem}/>
-                })}
-            </div> */}
+
+            <div className="w-full border-2">
+                <div className="flex">
+                    {carousel.map((carouselItem,index)=>{
+                        return <CarouselCard key={index} {...carouselItem}/>
+                    })}
+                </div>
+            </div>
             
             <div className="flex flex-wrap gap-10 justify-center mx-2">
                 {

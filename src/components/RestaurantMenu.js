@@ -32,8 +32,8 @@ const RestaurantMenu = () => {
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <div className="flex justify-center items-center">
-      <div className="flex-col w-[800] mt-5 ">
+    <div className="flex justify-center items-center ">
+      <div className="flex-col w-[800] mt-5 relative" >
         <div>
           {/* <h1>Restaurant id: {id}</h1> */}
           {/* <img src={IMG_CDN_URL + restaurant.cloudinaryImageId}/> */}

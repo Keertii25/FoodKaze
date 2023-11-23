@@ -25,7 +25,7 @@ export const Header = () => {
   console.log(CartItems);
 
   return (
-    <div className="flex justify-between border px-3 border-green-500 overflow-hidden">
+    <div className="flex justify-between border px-3 border-green-500 overflow-hidden shadow-[rgba(0,0,0,0.1)_0px_1px_3px_0px,rgba(0,0,0,0.06)_0px_1px_2px_0px]">
       <div className="flex gap-8">
         {title}
       </div>

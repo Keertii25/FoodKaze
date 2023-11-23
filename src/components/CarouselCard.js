@@ -2,7 +2,7 @@ import { IMG_CDN_URL } from "../constants";
 const CarouselCard = ({imageId}) =>{
     return (
        <div>
-        <img src={IMG_CDN_URL + imageId} alt="" />
+        <img className="h-96" src={IMG_CDN_URL + imageId} alt="" />
        </div>
     )
 };

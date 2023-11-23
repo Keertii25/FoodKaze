@@ -50,19 +50,19 @@ import { TbProgressHelp } from "react-icons/tb";
             <DrawerBody>
             <ul className="flex gap-1 flex-col font-roboto font-medium text-lg ">
           <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
-            <Link to="/" className="flex items-center gap-1"><BiHome />Home</Link>
+            <Link to="/" className="flex items-center gap-1" onClick={onClose}><BiHome />Home</Link>
           </li>
           <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
-            <Link to="/about" className="flex items-center gap-1"><FcAbout/>About</Link>
+            <Link to="/about" className="flex items-center gap-1" onClick={onClose}><FcAbout/>About</Link>
           </li>
           {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
             <Link to="/instamart">Instamart</Link>
           </li> */}
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
+          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm' onClick={onClose}>
             <Link to="/help" className="flex items-center gap-1"><TbProgressHelp /> Help</Link>
           </li>
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>
-            <Link to="/contact" className="flex items-center gap-1"><RiContactsLine />Contact</Link>
+          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>  
+            <Link to="/contact" className="flex items-center gap-1" onClick={onClose}><RiContactsLine />Contact</Link>
           </li>
          
         </ul>
