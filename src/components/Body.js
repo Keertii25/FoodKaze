@@ -1,29 +1,26 @@
 import RestaurantCard from "./RestaurantCard";
-import {RestaurantList} from "../constants";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
 import {filterData} from "../utils/helper"
 import useOnline from "../utils/useOnline";
-import CarouselCard from "./carouselCard";
+import carousel_1 from "../assets/img/Carousel image/carousel-1.jpg";
+import carousel_2 from "../assets/img/Carousel image/carousel-2.jpg";
+import carousel_3 from "../assets/img/Carousel image/carousel-3.jpg";
 
 
 const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
-    const [filteredRestaurants, setFilteredRestaurants]= useState([]); 
-    const [carousel,setCarousel] =useState([]);
+    const [filteredRestaurants, setFilteredRestaurants]= useState([]);
     const [searchText,setSearchText]= useState("");
     
     useEffect(()=>{
         getRestaurants(); 
     },[])
+
     async function getRestaurants(){
         const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
         console.log(json); 
-        setCarousel(json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
-        console.log("carousel")
-        console.log(carousel)
         setAllRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
@@ -32,12 +29,26 @@ const Body= () => {
     console.log(isOnline);
     if(!isOnline){
         return <h1>🔴 You are offline, Plz check your internet connection</h1>
-    }
-
+    }   
+    <div className="h-[90vh] w-[80vw] m-auto rounded-md my-6 shadow-[rgba(0,0,0,0.07)_0px_1px_2px,rgba(0,0,0,0.07)_0px_2px_4px,rgba(0,0,0,0.07)_0px_4px_8px,rgba(0,0,0,0.07)_0px_8px_16px,rgba(0,0,0,0.07)_0px_16px_32px,rgba(0,0,0,0.07)_0px_32px_64px]">
+                <div className="overflow-hidden h-[100%] w-[100%] flex">
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_1} alt="" />
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_2} alt="" />
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_3} alt="" />
+                </div>
+    </div>
     if(!allRestaurants) return null;
-
+    
     return (allRestaurants.length===0)? <Shimmer/> :(
         <>
+            {console.log(allRestaurants.length)}
+            {/* <div className="h-[90vh] w-[80vw] m-auto rounded-md my-6 shadow-[rgba(0,0,0,0.07)_0px_1px_2px,rgba(0,0,0,0.07)_0px_2px_4px,rgba(0,0,0,0.07)_0px_4px_8px,rgba(0,0,0,0.07)_0px_8px_16px,rgba(0,0,0,0.07)_0px_16px_32px,rgba(0,0,0,0.07)_0px_32px_64px]">
+                <div className="overflow-hidden h-[100%] w-[100%] flex">
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_1} alt="" />
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_2} alt="" />
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_3} alt="" />
+                </div>
+            </div> */}
             <div className="mt-2 mb-5 flex justify-center gap-2">
                 <input
                     type="text"
@@ -45,22 +56,14 @@ const Body= () => {
                     placeholder="ex: The Filter Coffee"
                     value={searchText}
                     onChange={(e)=>{
-                        return setSearchText(e.target.value );
+                        return setSearchText(e.target.value);
                     }}
                 />
                 <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=>{
                     const data=filterData(searchText,allRestaurants);
                     return setFilteredRestaurants(data);
                 }}>Search</button>
-            </div>
-
-            <div className="w-full border-2">
-                <div className="flex">
-                    {carousel.map((carouselItem,index)=>{
-                        return <CarouselCard key={index} {...carouselItem}/>
-                    })}
-                </div>
-            </div>
+            </div>   
             
             <div className="flex flex-wrap gap-10 justify-center mx-2">
                 {

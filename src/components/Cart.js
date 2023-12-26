@@ -10,7 +10,6 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import { GiSwipeCard,GiCash } from "react-icons/gi";
 import { BsCreditCard2Front } from "react-icons/bs";
 
-import { MdOutlinePayment } from "react-icons/md";
 
 const Cart = () => {
     const CartItems = useSelector(store => store.cart.items);
