@@ -7,7 +7,6 @@ import carousel_1 from "../assets/img/Carousel image/carousel-1.jpg";
 import carousel_2 from "../assets/img/Carousel image/carousel-2.jpg";
 import carousel_3 from "../assets/img/Carousel image/carousel-3.jpg";
 
-
 const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
     const [filteredRestaurants, setFilteredRestaurants]= useState([]);
