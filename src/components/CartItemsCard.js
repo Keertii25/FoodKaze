@@ -1,7 +1,14 @@
 import { GoTrash } from "react-icons/go";
 import { IMG_CDN_URL } from "../constants";
+import { useDispatch } from "react-redux";
+import { RemoveItem } from "../utils/Redux/CartSlice";
 
-const CartItemsCard = ({ name, imageId, defaultPrice }) => { 
+const CartItemsCard = ({ name, imageId, defaultPrice,id }) => { 
+  const dispatch = useDispatch();
+  const handleRemoveItem = (info) => {
+    dispatch(RemoveItem(info));
+    console.log(info)
+  } 
   return (
     <div className="w-full flex items-center justify-between gap-3 mt-2 border-[1px] p-1">
       <img
@@ -14,7 +21,7 @@ const CartItemsCard = ({ name, imageId, defaultPrice }) => {
           {defaultPrice?<h3 className="text-right">{"₹" + defaultPrice/100}</h3>:<h3 className="text-right">₹100</h3>}
           
         </div>
-        <GoTrash className="text-2xl text-red-500"/>
+        <GoTrash className="text-2xl text-red-500" onClick={()=>handleRemoveItem({id})}/>
       </div>
     </div>
   );

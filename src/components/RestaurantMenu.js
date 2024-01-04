@@ -23,20 +23,12 @@ const RestaurantMenu = () => {
 
   const [favourate, setFavourate] = useState(false);
 
-  const dispatch = useDispatch();
-
-  const handleAddItem = (info) => {
-    dispatch(addItem(info));
-  };
-
   return !restaurant ? (
     <Shimmer />
   ) : (
     <div className="flex justify-center items-center ">
       <div className="flex-col w-[800] mt-5 relative" >
         <div>
-          {/* <h1>Restaurant id: {id}</h1> */}
-          {/* <img src={IMG_CDN_URL + restaurant.cloudinaryImageId}/> */}
           <div className="flex justify-between">
             <h1 className="text-xl font-bold tracking-wide">
               {restaurant.name}{" "}
@@ -74,15 +66,6 @@ const RestaurantMenu = () => {
             
             <div>
               {temp1?.card?.card?.itemCards?.map((temp2) => (
-                // <li key={temp2?.card?.info?.id}>
-                //   {temp2?.card?.info?.name} -{" "}
-                //   <button
-                //     className="bg-blue-100"
-                //     onClick={() => handleAddItem(temp2?.card?.info)}
-                //   >
-                //     AddItem
-                //   </button>
-                // </li>
                 <RestaurantMenuCard key={temp2?.card?.info?.id} {...temp2?.card?.info} />
                 ))}
             </div>

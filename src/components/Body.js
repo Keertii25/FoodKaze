@@ -3,9 +3,6 @@ import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import {filterData} from "../utils/helper"
 import useOnline from "../utils/useOnline";
-import carousel_1 from "../assets/img/Carousel image/carousel-1.jpg";
-import carousel_2 from "../assets/img/Carousel image/carousel-2.jpg";
-import carousel_3 from "../assets/img/Carousel image/carousel-3.jpg";
 
 const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
@@ -37,9 +34,14 @@ const Body= () => {
             {console.log(allRestaurants.length)}
             <div className="h-[90vh] w-[80vw] m-auto rounded-md my-6 shadow-[rgba(0,0,0,0.07)_0px_1px_2px,rgba(0,0,0,0.07)_0px_2px_4px,rgba(0,0,0,0.07)_0px_4px_8px,rgba(0,0,0,0.07)_0px_8px_16px,rgba(0,0,0,0.07)_0px_16px_32px,rgba(0,0,0,0.07)_0px_32px_64px]">
                 <div className="overflow-hidden h-[100%] w-[100%] flex">
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_1} alt="" />
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_2} alt="" />
-                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_3} alt="" />
+                    {/* <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_1} alt="" /> */}
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1563683640683-74f1723873d0?q=80&w=1398&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1643341936218-fc5399005f0c?q=80&w=1477&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src="https://images.unsplash.com/photo-1550389636-ad25afa7ab44?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
+                    {/* <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_2} alt="" />
+                    <img className="h-full min-w-[100%]" style={{animation:'slide 20s linear infinite'}} src={carousel_3} alt="" /> */}
                 </div>
             </div>
             <div className="mt-2 mb-5 flex justify-center gap-2">

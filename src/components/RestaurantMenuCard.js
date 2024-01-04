@@ -8,6 +8,7 @@ const RestaurantMenuCard = ({
     description,
     imageId,
     defaultPrice,
+    id,
 }) => {
     const dispatch = useDispatch();
 
@@ -25,7 +26,7 @@ const RestaurantMenuCard = ({
             <div className="h-24 w-32 relative border-2 items-center">
               <img className="h-full w-full rounded-lg" src={IMG_CDN_URL + imageId} alt="" />
               <Button className="absolute bottom-[25%] left-[25%]" colorScheme='green'
-                onClick={() => (handleAddItem({name,imageId,defaultPrice}))}
+                onClick={() => (handleAddItem({name,imageId,defaultPrice,id}))}
               >Add</Button>
             </div>  
 
