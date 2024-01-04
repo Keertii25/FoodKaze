@@ -61,9 +61,9 @@ import { TbProgressHelp } from "react-icons/tb";
           <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm' onClick={onClose}>
             <Link to="/help" className="flex items-center gap-1"><TbProgressHelp /> Help</Link>
           </li>
-          <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>  
+          {/* <li className='hover:bg-slate-100 py-2 px-3 transition-all transition-200 rounded-sm'>  
             <Link to="/contact" className="flex items-center gap-1" onClick={onClose}><RiContactsLine />Contact</Link>
-          </li>
+          </li> */}
          
         </ul>
             </DrawerBody>
