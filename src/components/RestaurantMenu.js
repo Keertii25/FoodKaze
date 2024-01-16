@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurants";
-import { useDispatch } from "react-redux";
-import { addItem } from "../utils/Redux/CartSlice";
 import { FcLike,FcLikePlaceholder } from "react-icons/fc";
 import { FaStar } from "react-icons/fa";
 import { IoTimerSharp } from "react-icons/io5";
@@ -62,7 +59,7 @@ const RestaurantMenu = () => {
 
         {restaurantData.map((temp1, index) => (
           <>
-            {temp1?.card?.card?.title ? <h1 key={index} className="text-2xl font-bold mt-10 border-t-8 border-gray-300 pt-8">{temp1?.card?.card?.title} ({temp1?.card?.card?.itemCards?.length})</h1>:null}
+            {temp1?.card?.card?.title ? <h1 key={temp1?.card?.card?.title} className="text-2xl font-bold mt-10 border-t-8 border-gray-300 pt-8">{temp1?.card?.card?.title} ({temp1?.card?.card?.itemCards?.length})</h1>:null}
             
             <div>
               {temp1?.card?.card?.itemCards?.map((temp2) => (

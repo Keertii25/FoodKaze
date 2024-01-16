@@ -41,8 +41,9 @@ const Cart = () => {
                         <div className="w-full text-3xl text-left font-semibold text-gray-600 ">Food Items-{CartItems.length}</div>
                         <div className="flex flex-col mt-4">
                             {CartItems.map((items)=>{
-                                return <CartItemsCard {...items}/>
+                                return <CartItemsCard key={items.id} {...items}/>
                             })}
+                            
                         </div>
                     </div>
                     {/* billing section */}

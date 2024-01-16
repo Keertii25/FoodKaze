@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { RemoveItem } from "../utils/Redux/CartSlice";
 
 const CartItemsCard = ({ name, imageId, defaultPrice,id }) => { 
+
   const dispatch = useDispatch();
   const handleRemoveItem = (info) => {
     dispatch(RemoveItem(info));

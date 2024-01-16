@@ -1,14 +1,12 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
-import UsersContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 import { Button } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 import { BiSolidUser } from "react-icons/bi";
 import { BsFillCartFill } from "react-icons/bs";
-import { TbProgressHelp } from "react-icons/tb";
 import { DrawerExample } from "../constants";
 
 
