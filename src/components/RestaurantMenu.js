@@ -20,6 +20,7 @@ const RestaurantMenu = () => {
 
   const [favourate, setFavourate] = useState(false);
 
+  {console.log(restaurant)}
   return !restaurant ? (
     <Shimmer />
   ) : (

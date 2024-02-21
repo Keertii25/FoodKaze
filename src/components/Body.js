@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import {filterData} from "../utils/helper"
 import useOnline from "../utils/useOnline";
+import { jsondata } from "../Restaurant_list";
 
 const Body= () => {
     const [allRestaurants, setAllRestaurants]= useState([]);
@@ -14,11 +15,11 @@ const Body= () => {
     },[])
 
     async function getRestaurants(){
-        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
-        const json=await data.json();
-        console.log(json); 
-        setAllRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredRestaurants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        // const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json=jsondata;
+        console.log("bhavesh",json); 
+        setAllRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     }
 
     const isOnline = useOnline();    //created a useOnline custom hook which returns true or false

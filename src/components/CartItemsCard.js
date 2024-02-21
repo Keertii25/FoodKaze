@@ -6,9 +6,9 @@ import { RemoveItem } from "../utils/Redux/CartSlice";
 const CartItemsCard = ({ name, imageId, defaultPrice,id }) => { 
 
   const dispatch = useDispatch();
-  const handleRemoveItem = (info) => {
-    dispatch(RemoveItem(info));
-    console.log(info)
+  const handleRemoveItem = (id) => {
+    dispatch(RemoveItem(id));
+    console.log(id)
   } 
   return (
     <div className="w-full flex items-center justify-between gap-3 mt-2 border-[1px] p-1">
