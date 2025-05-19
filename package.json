@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NamanGIT32/Starting-with-React-JS.git"
+    "url": "git+https://github.com/keertii25/learning-react-js.git"
   },
-  "author": "Naman Paliwal",
+  "author": "Keertii",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NamanGIT32/Starting-with-React-JS/issues"
+    "url": "https://github.com/keertii25/learning-react-js/issues"
   },
-  "homepage": "https://github.com/NamanGIT32/Starting-with-React-JS#readme",
+  "homepage": "https://github.com/keertii25/learning-react-js#readme",
   "devDependencies": {
     "@babel/core": "^7.22.15",
     "babel-plugin-transform-remove-console": "^6.9.4",

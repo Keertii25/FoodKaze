@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Logo from "../assets/img/logo.png";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useSelector } from "react-redux";
@@ -12,7 +11,7 @@ import { DrawerExample } from "../constants";
 
 export const title = (
   <a href="/">
-    <img className="h-28" alt="logo" src={Logo} />
+    FoodKaze
   </a>
 );
 
