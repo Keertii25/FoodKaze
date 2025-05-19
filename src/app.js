@@ -28,8 +28,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const AppLayout = () => {
   const [info, setInfo]= useState({
-    name:"naman",
-    phone:"7879651164",
+    name:"keerti",
+    phone:"7898436391",
   });
   return (
     <>
